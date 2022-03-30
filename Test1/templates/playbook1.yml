@@ -1,15 +1,15 @@
 ---
 
-- name: Network Getting Started First Playbook
-  hosts: SWITCHES
+- name: Cisco show version example
+  hosts: routers
   gather_facts: false
-  connection: local
 
   tasks:
-    - name: Change Hostname SW1
-      ios_facts:
+    - name: run show version of the routers
+      ios_command:
+        commands: show version | incl Version
+      register: output
 
-    - debug:
-        msg: 
-        - "Current version is {{ansible_net_version}}"
-            
+    - name: print output
+      debug:
+        var: output.stdout_lines
