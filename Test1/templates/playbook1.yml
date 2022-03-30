@@ -1,0 +1,15 @@
+---
+
+- name: Network Getting Started First Playbook
+  hosts: SWITCHES
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Change Hostname SW1
+      ios_facts:
+
+    - debug:
+        msg: 
+        - "Current version is {{ansible_net_version}}"
+            
