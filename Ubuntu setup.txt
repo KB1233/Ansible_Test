@@ -63,3 +63,13 @@ ssh admin@192.168.1.2 2003
 
 ----------------------------------------------------
 ansible-playbook playbook1.yml -i hosts -k
+
+----------------------------------------------------
+This plugin is part of the cisco.ios collection (version 2.6.0).
+
+You might already have this collection installed if you are using the ansible package. 
+It is not included in ansible-core. To check whether it is installed, run ansible-galaxy collection list.
+
+To install it, use: ansible-galaxy collection install cisco.ios.
+
+To use it in a playbook, specify: cisco.ios.ios_l3_interfaces.

@@ -1,0 +1,9 @@
+---
+
+- name: Add static route
+  hosts: routers
+
+  tasks:
+    - name: Add static route
+      cisco.ios.ios_config:
+        lines: ip route 10.3.3.0 255.255.255.255 192.168.1.1      

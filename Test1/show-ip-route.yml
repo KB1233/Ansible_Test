@@ -1,0 +1,18 @@
+---
+
+- name: Cisco show interface + ip route
+  hosts: routers
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+    - name: run show interface + ip route
+      ios_command:
+        commands:
+          - show ip interface brief
+          - show ip route
+      register: output
+
+    - name: print output
+      debug:
+        var: output.stdout_lines

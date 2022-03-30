@@ -3,6 +3,7 @@
 - name: Cisco show version example
   hosts: routers
   gather_facts: false
+  connection: network_cli
 
   tasks:
     - name: run show version of the routers
