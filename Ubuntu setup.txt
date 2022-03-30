@@ -1,0 +1,65 @@
+install 
+	ansible
+	postman
+	openconnect
+	chrome
+	visual code
+	github desktop
+	note++
+	slack
+	thunderbird
+	
+-------------------------------------------------
+#instal github desktop 
+
+sudo wget https://github.com/shiftkey/desktop/releases/download/release-2.9.3-linux3/GitHubDesktop-linux-2.9.3-linux3.deb
+
+sudo apt-get install gdebi-core 
+sudo gdebi GitHubDesktop-linux-2.9.3-linux3.deb
+	
+-------------------------------------------------
+# go to root mode to change config file of app
+
+sudo -H /bin/bash
+---------------------------------------------------
+# edit config file of openconnect to ssh in case of legacy system
+
+sudo -H /bin/bash 
+cd /etc/ssh
+
+sudo nano ssh_config
+# delete '#' and add new line:
+	Port 22
+    Ciphers aes128-ctr,aes192-ctr,aes256-ctr,aes128-cbc,3des-cbc
+    KexAlgorithms +diffie-hellman-group-exchange-sha1
+
+# if don't want to edit config file then use this
+
+ssh -o KexAlgorithms=diffie-hellman-group14-sha1 user@remotehost
+openssh
+ken@ken:~$ ssh -c aes256-cbc admin@192.168.1.3
+Unable to negotiate with 192.168.1.3 port 22: no matching key exchange method found. Their offer: diffie-hellman-group1-sha1
+
+ken@ken:~$ ssh -o KexAlgorithms=diffie-hellman-group1-sha1 -c aes256-cbc admin@192.168.1.3
+
+$ ssh -c aes256-cbc admin@nas.home
+
+# sometimes you can't ssh to different devices with same ip address
+# clear the ssh key of previous devices at /home/ken/.ssh/known_hosts
+--------------------------------------------------
+# unlock file and folder in ubuntu
+
+ken@ken:~/Ansible_Test$ sudo su
+root@ken:/home/ken/Ansible_Test# chmod 777 ./templates
+root@ken:/home/ken/Ansible_Test# exit
+exit
+
+----------------------------------------------------
+# telnet and ssh to ip address with port
+
+example connect to 192.168.1.2 with port 2003
+telnet 192.168.1.2 2003
+ssh admin@192.168.1.2 2003
+
+----------------------------------------------------
+ansible-playbook playbook1.yml -i hosts -k
